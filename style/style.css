@@ -1,0 +1,210 @@
+* {
+  box-sizing: border-box;
+  font-size: 20px;
+  font-family: Roboto sans-serif;
+}
+.wrapper {
+  width: 600px;
+  min-height: 435px;
+  border: 1px solid black;
+}
+.searchField {
+  min-height: 45px;
+  border-bottom: 1px solid black;
+}
+.searchInput {
+  min-height: 45px;
+  min-width: 540px;
+  outline: none;
+  border: none;
+  margin-left: 10px;
+}
+.searchButton {
+  max-height: 30px;
+  max-width: 30px;
+  margin-right: 17px;
+  margin-top: 25px;
+  padding: 0%;
+}
+.button {
+  border: none;
+  background-color: white;
+}
+.citiesField {
+  display: flex;
+  min-height: 390px;
+}
+.left-field {
+  width: 300 px;
+  height: auto;
+  border-right: 1px solid black;
+  font-family: Roboto;
+}
+
+/*Содержимое 1 экрана*/
+.current_temperature {
+  font-size: 60px;
+  padding-left: 23px;
+  font-family: Roboto;
+}
+.cloud {
+  padding-left: 50px;
+  margin: 0px;
+}
+.current-city {
+  margin-top: 98px;
+}
+
+.current-city {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  padding-left: 10px;
+  font-family: Roboto;
+}
+
+/*Содержимое 2 экрана*/
+.current-city-details {
+  height: auto;
+  padding-left: 17px;
+  padding-top: 33px;
+  font-size: 24px;
+}
+
+.li-current-city-details {
+  margin-top: 30px;
+  padding: 0px;
+}
+
+/*Содержимое 3 экрана*/
+.tab-forecast {
+  padding-left: 10px;
+
+  padding-top: 20px;
+}
+.forecast-box {
+  width: 265px;
+  height: 120px;
+  border: 1px solid black;
+  padding: 10px;
+  margin-bottom: 15px;
+  margin-top: 10px;
+}
+.date {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+.forecast-details {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Конец*/
+
+.tabs-content {
+  width: 300px;
+  height: 345px;
+  overflow: hidden;
+  position: relative;
+}
+
+.content-of-tabs {
+  margin: 0px;
+  padding: 0px;
+  width: 300px;
+  height: 345px;
+  overflow: auto;
+}
+
+/* .tabs-content ul li {
+  width: 300px;
+  height: 345px;
+  /* overflow:auto; 
+} */
+
+.tabs-buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: auto;
+  min-height: 45px;
+  border-top: 1px solid black;
+  padding: 0%;
+  margin: 0%;
+}
+.tab {
+  width: 33.33%;
+  min-height: 45px;
+  text-align: center;
+  /* padding-top: 12px; */
+}
+.button-first {
+  border-right: 1px solid black;
+}
+.button-second {
+  border-right: 1px solid black;
+}
+a {
+  text-decoration: none;
+  display: block;
+  color: black;
+  width: 100%;
+  height: 100%;
+  padding-top: 12px;
+  padding-bottom: 10px;
+}
+
+.tabs-buttons :hover {
+  background-color: black;
+  color: aliceblue;
+}
+
+.button:hover {
+  cursor: pointer;
+}
+ul, p, h3 {
+  padding: 0px;
+  margin: 0px;
+}
+li {
+  list-style: none;
+}
+/* p {
+  padding: 0px;
+  margin: 0px;
+}
+h3 {
+  padding: 0px;
+  margin: 0px;
+} */
+
+.right-field {
+  width: 300px;
+  font-size: 24px;
+}
+
+.title_added_locations {
+  min-height: 68px;
+  border-bottom: 1px solid black;
+  padding-left: 18px;
+  padding-top: 33px;
+}
+.favoirite-cities {
+  padding-left: 18px;
+  height: 300px;
+  overflow: auto;
+}
+
+/* правый экран */
+.favoirite-city {
+  /* margin-bottom: 4px; */
+  margin-top: 8px;
+  /*  border: 1px solid grey; */
+  display: flex;
+  justify-content: space-between;
+}
+
+.closeButton {
+  color: tomato;
+}

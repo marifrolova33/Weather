@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style/style.css" />
+    <title>Weather</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="wrapper">
+        <div class="searchField">
+          <form action="" class="form">
+            <input
+              type="text"
+              name=""
+              id=""
+              class="searchInput"
+              placeholder="Type the city"
+            />
+            <button type="submit" class="button searchButton">
+              <img src="img/Shape.png" alt="" />
+            </button>
+          </form>
+        </div>
+        <div class="citiesField">
+          <div class="left-field">
+            <div class="tabs-content">
+              <ul>
+                <!-- Содержимое первого таба -->
+                <li id="one" class="content-of-tabs">
+                  <div class="current_temperature tabNow"></div>
+                  <img class="cloud image" />
+                  <div class="current-city">
+                    <span class="currentCityName tabNow"></span>
+                    <button class="button buttonAddCity">
+                      <img class="buttonLike image" />
+                    </button>
+                  </div>
+                </li>
+
+                <!-- Содержимое второго экрана -->
+                <li id="two" class="content-of-tabs">
+                  <div class="current-city-details">
+                    <span class="details_city_name details"></span>
+                    <ul class="li-current-city-details">
+                      <li class="detailsTemp details"></li>
+                      <li class="feelsLike details"></li>
+                      <li class="weatherClouds details"></li>
+                      <li class="sunrise details"></li>
+                      <li class="sunset details"></li>
+                    </ul>
+                  </div>
+                </li>
+
+                <!-- Содержимое третьего экрана -->
+                <li id="three" class="content-of-tabs"></li>
+              </ul>
+            </div>
+            <ul class="tabs-buttons">
+              <li class="tab button-first"><a href="#one">Now</a></li>
+              <li class="tab button-second"><a href="#two">Details</a></li>
+              <li class="tab button-third"><a href="#three">Forecast</a></li>
+            </ul>
+          </div>
+
+          <div class="right-field">
+            <div class="title_added_locations">
+              <h3>Added locations</h3>
+            </div>
+            <div class="favoirite-cities">
+              <ul class="addedLocationsList"></ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="main.js" type="module"></script>
+    <script src="scripts/constants.js" type="module"></script>
+    <script src="scripts/localStorage.js" type="module"></script>
+    <script src="scripts/clearFunctions.js" type="module"></script>
+    <script src="scripts/fillTabs.js" type="module"></script>
+  </body>
+</html>
