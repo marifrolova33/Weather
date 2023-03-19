@@ -1,5 +1,5 @@
 export const SERVER = {
-  SERVER_URL: "http://api.openweathermap.org/data/2.5/weather",
+  SERVER_URL: "https://api.openweathermap.org/data/2.5/weather",
   API_KEY: "3b2a90ab392eba7f5708d0c85c3d4695",
 };
 
