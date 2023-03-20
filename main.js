@@ -2,12 +2,15 @@ import { SERVER, FORM, TAB_NOW } from "./scripts/constants.js";
 import {
   ADDED_LOCATIONS_LIST,
   createLocalStorage,
+  fillTabsByDefault,
 } from "./scripts/localStorage.js";
 import { clearAddedLocations, clearTabs } from "./scripts/clearFunctions.js";
 import { fillTabNow, fillTabDetails } from "./scripts/fillTabs.js";
 
 FORM.FORM_FIELD.addEventListener("submit", getCityWeather);
 TAB_NOW.BUTTON_ADD_CITY.addEventListener("click", addFavoiriteCity);
+
+fillTabsByDefault();
 
 async function getDataFromURL(cityName) {
   const URL = `${SERVER.SERVER_URL}?q=${cityName}&appid=${SERVER.API_KEY}&units=metric`;
@@ -73,6 +76,9 @@ function render() {
     closeButton.addEventListener("click", deleteTask);
     favoiriteCityName.addEventListener("click", getFavoiriteCityWeather);
   });
+  if (ADDED_LOCATIONS_LIST.length === 0) {
+    fillTabsByDefault();
+  }
 }
 
 function deleteTask() {

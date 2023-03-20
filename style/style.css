@@ -63,19 +63,24 @@
   font-family: Roboto;
 }
 .cloud {
-  padding-left: 50px;
   margin: 0px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
-.current-city {
-  margin-top: 98px;
+.imageBorder {
+  padding-left: 50px;
+  height: 200px;
+  width: 200px;
 }
 
 .current-city {
   display: flex;
   justify-content: space-between;
-  margin-top: 20px;
   padding-left: 10px;
   font-family: Roboto;
+  margin-top: 20px;
 }
 
 .current-city-details {
