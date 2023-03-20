@@ -29,9 +29,10 @@ async function getDataFromURL(cityName) {
 
 async function getCityWeather(event) {
   event.preventDefault();
-  const cityName = FORM.CITY_NAME.value;
-  FORM.FORM_FIELD.reset();
+  const cityNameForm = FORM.CITY_NAME.value;
+  const cityName = cityNameForm.trim();
   const cityWeatherData = await getDataFromURL(cityName);
+  FORM.FORM_FIELD.reset();
 
   if (!cityWeatherData) {
     return;
@@ -93,4 +94,5 @@ function deleteTask() {
   clearTabs();
   render();
 }
+
 render();
