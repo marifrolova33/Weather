@@ -26,15 +26,14 @@ export function fillTabDetails(cityName, cityWeatherData) {
   TAB_DETAILS.WEATHER_CLOUDS.textContent = `Weather:  ${
     weatherCloudsValue[0].toUpperCase() + weatherCloudsValue.slice(1)
   }`;
-
-  const sunriseMinutes = correctMinutes(sunriseValue.getMinutes());
-  const sunsetMinutes = correctMinutes(sunsetValue.getMinutes());
-
-  TAB_DETAILS.SUNRISE.textContent = `Sunrise:  0${sunriseValue.getHours()}:${sunriseMinutes}`;
-  TAB_DETAILS.SUNSET.textContent = `Sunset:  ${sunsetValue.getHours()}:${sunsetMinutes}`;
-
+  TAB_DETAILS.SUNRISE.textContent = `Sunrise: ${correctTime(sunriseValue)}`;
+  TAB_DETAILS.SUNSET.textContent = `Sunset:  ${correctTime(sunsetValue)}`;
 }
 
-function correctMinutes(minutes) {
-  return minutes < 10 ? "0" + minutes : minutes;
+function correctTime(timeValue) {
+  const hours = timeValue.getHours();
+  const minutes = timeValue.getMinutes();
+  const hourValue = hours < 10 ? "0" + hours : hours;
+  const minutesValue = minutes < 10 ? "0" + minutes : minutes;
+  return `${hourValue}:${minutesValue}`;
 }
