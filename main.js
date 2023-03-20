@@ -93,5 +93,4 @@ function deleteTask() {
   clearTabs();
   render();
 }
-
 render();
