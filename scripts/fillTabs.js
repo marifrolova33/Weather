@@ -20,10 +20,21 @@ export function fillTabDetails(cityName, cityWeatherData) {
   TAB_DETAILS.TEMPERATURE.textContent = `Temperature: ${Math.trunc(
     currentTempValue
   )}°`;
-  TAB_DETAILS.FEELS_LIKE.textContent = `Feels like:  ${Math.trunc(feelsLikeValue)}°`;
+  TAB_DETAILS.FEELS_LIKE.textContent = `Feels like:  ${Math.trunc(
+    feelsLikeValue
+  )}°`;
   TAB_DETAILS.WEATHER_CLOUDS.textContent = `Weather:  ${
     weatherCloudsValue[0].toUpperCase() + weatherCloudsValue.slice(1)
   }`;
-  TAB_DETAILS.SUNRISE.textContent = `Sunrise:  0${sunriseValue.getHours()}:${sunriseValue.getMinutes()}`;
-  TAB_DETAILS.SUNSET.textContent = `Sunset:  ${sunsetValue.getHours()}:${sunsetValue.getMinutes()}`;
+
+  const sunriseMinutes = correctMinutes(sunriseValue.getMinutes());
+  const sunsetMinutes = correctMinutes(sunsetValue.getMinutes());
+
+  TAB_DETAILS.SUNRISE.textContent = `Sunrise:  0${sunriseValue.getHours()}:${sunriseMinutes}`;
+  TAB_DETAILS.SUNSET.textContent = `Sunset:  ${sunsetValue.getHours()}:${sunsetMinutes}`;
+
+}
+
+function correctMinutes(minutes) {
+  return minutes < 10 ? "0" + minutes : minutes;
 }
