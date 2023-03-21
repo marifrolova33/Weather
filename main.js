@@ -2,7 +2,7 @@ import { SERVER, FORM, TAB_NOW } from "./scripts/constants.js";
 import {
   ADDED_LOCATIONS_LIST,
   createLocalStorage,
-  fillTabsByDefault,
+  fillTabsIfEmpty,
 } from "./scripts/localStorage.js";
 import { clearAddedLocations, clearTabs } from "./scripts/clearFunctions.js";
 import { fillTabNow, fillTabDetails } from "./scripts/fillTabs.js";
@@ -78,7 +78,7 @@ function render() {
     favoiriteCityName.addEventListener("click", getFavoiriteCityWeather);
   });
   if (ADDED_LOCATIONS_LIST.length === 0) {
-    fillTabsByDefault();
+    fillTabsIfEmpty();
   }
 }
 
@@ -92,7 +92,15 @@ function deleteTask() {
   }
   createLocalStorage(ADDED_LOCATIONS_LIST);
   clearTabs();
+  fillTabsByDefault();
   render();
+}
+
+async function fillTabsByDefault () {
+  const cityName = ADDED_LOCATIONS_LIST[0].name;
+  const cityWeatherData = await getDataFromURL(cityName);
+  fillTabNow(cityName, cityWeatherData);
+  fillTabDetails(cityName, cityWeatherData);
 }
 
 render();

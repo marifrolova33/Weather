@@ -64,23 +64,24 @@
 }
 .cloud {
   margin: 0px;
-  position: absolute;
+  position: relative;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
 }
 .imageBorder {
-  padding-left: 50px;
+  padding-left: 90px;
   height: 200px;
   width: 200px;
+  position: relative;
 }
-
 .current-city {
   display: flex;
   justify-content: space-between;
   padding-left: 10px;
   font-family: Roboto;
   margin-top: 20px;
+  position: static;
 }
 
 .current-city-details {
