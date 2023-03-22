@@ -1,10 +1,12 @@
 import { SERVER, FORM, TAB_NOW } from "./scripts/constants.js";
 import {
   ADDED_LOCATIONS_LIST,
-  createLocalStorage,
-  fillTabsIfEmpty,
-} from "./scripts/localStorage.js";
-import { clearAddedLocations, clearTabs } from "./scripts/clearFunctions.js";
+  createLocalStorage} from "./scripts/localStorage.js";
+import {
+  clearAddedLocations,
+  clearTabs,
+  fillTabsIfEmpty
+} from "./scripts/clearFunctions.js";
 import { fillTabNow, fillTabDetails } from "./scripts/fillTabs.js";
 
 FORM.FORM_FIELD.addEventListener("submit", getCityWeather);
@@ -96,7 +98,7 @@ function deleteTask() {
   render();
 }
 
-async function fillTabsByDefault () {
+async function fillTabsByDefault() {
   const cityName = ADDED_LOCATIONS_LIST[0].name;
   const cityWeatherData = await getDataFromURL(cityName);
   fillTabNow(cityName, cityWeatherData);

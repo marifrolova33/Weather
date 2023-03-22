@@ -61,6 +61,8 @@
   font-size: 60px;
   padding-left: 23px;
   font-family: Roboto;
+  min-height: 60px;
+  width: 300px;
 }
 .cloud {
   margin: 0px;
@@ -213,3 +215,10 @@ li {
 .button {
   background: transparent;
 }
+.buttonLike:hover {
+  background-color: red;
+}
+
+/* #one {
+   text-align: center;
+} */
