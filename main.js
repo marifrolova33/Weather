@@ -132,7 +132,7 @@ async function fillTabsByDefault() {
 
   fillTabNow(cityName, cityWeatherData);
   fillTabDetails(cityName, cityWeatherData);
- //\] fillTabForecast(cityName, forecastData);
+  fillTabForecast(cityName, forecastData);
 }
 
 render();
