@@ -45,14 +45,19 @@ async function getDataForForecast(cityName) {
       return;
     }
   } catch (error) {
-    alert(new Error(`Error: ${error.name} - ${error.message}`));
+    console.log(new Error(`Error: ${error.name} - ${error.message}`));
   }
 }
 
 async function getCityWeather(event) {
   event.preventDefault();
   const cityNameForm = FORM.CITY_NAME.value;
+
   const cityName = cityNameForm.trim();
+  if (!cityName) {
+    alert("You should type a city name");
+    return;
+  }
   const cityWeatherData = await getDataForNowDetails(cityName);
   const forecastData = await getDataForForecast(cityName);
   FORM.FORM_FIELD.reset();
