@@ -5,7 +5,7 @@ export function fillTabNow(cityName, cityWeatherData) {
 
   TAB_NOW.CITY_NAME.textContent = cityName;
   TAB_NOW.TEMPERATURE.textContent = `${Math.trunc(currentTempValue)}°`;
-  TAB_NOW.IMG_LIKE.src = "img/Shape.svg";
+  TAB_NOW.IMG_LIKE.src = "img/483231_love_32x32.png";
   TAB_NOW.CLOUD.src = `https://openweathermap.org/img/wn/${cloudIcon}@4x.png`;
 }
 
