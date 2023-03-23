@@ -105,7 +105,7 @@
 }
 .forecast-box {
   width: 265px;
-  height: 120px;
+  min-height: 120px;
   border: 1px solid black;
   padding: 10px;
   margin-bottom: 15px;
@@ -114,12 +114,9 @@
 .date {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 }
-.forecast-details {
-  display: flex;
-  justify-content: space-between;
-}
+
 
 .tabs-content {
   width: 300px;
@@ -216,7 +213,27 @@ li {
   background: transparent;
 }
 .buttonLike:hover {
-  background-color: red;
+  border: transparent;
+  background-color: rgb(235, 120, 120);
+}
+
+.forecastImgBorder {
+  width: 50px;
+  height: 40px;
+}
+.forecastImg {
+  height: 100%;
+}
+
+.forecast-temp {
+  display: flex;
+  justify-content: space-between;
+}
+
+.forecast_picture {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 /* #one {

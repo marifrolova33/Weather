@@ -1,21 +1,41 @@
 import { SERVER, FORM, TAB_NOW } from "./scripts/constants.js";
 import {
   ADDED_LOCATIONS_LIST,
-  createLocalStorage} from "./scripts/localStorage.js";
+  createLocalStorage,
+} from "./scripts/localStorage.js";
 import {
   clearAddedLocations,
   clearTabs,
-  fillTabsIfEmpty
+  fillTabsIfEmpty,
 } from "./scripts/clearFunctions.js";
-import { fillTabNow, fillTabDetails } from "./scripts/fillTabs.js";
+import {
+  fillTabNow,
+  fillTabDetails,
+  fillTabForecast,
+} from "./scripts/fillTabs.js";
 
 FORM.FORM_FIELD.addEventListener("submit", getCityWeather);
 TAB_NOW.BUTTON_ADD_CITY.addEventListener("click", addFavoiriteCity);
 
 fillTabsByDefault();
 
-async function getDataFromURL(cityName) {
+async function getDataForNowDetails(cityName) {
   const URL = `${SERVER.SERVER_URL}?q=${cityName}&appid=${SERVER.API_KEY}&units=metric`;
+  try {
+    const response = await fetch(URL);
+    if (response.ok) {
+      return await response.json();
+    } else {
+      alert(`HTTP Error: ${response.status} - ${response.statusText}`);
+      return;
+    }
+  } catch (error) {
+    alert(new Error(`Error: ${error.name} - ${error.message}`));
+  }
+}
+
+async function getDataForForecast(cityName) {
+  const URL = `${SERVER.FORECAST_URL}?q=${cityName}&appid=${SERVER.API_KEY}&units=metric`;
   try {
     const response = await fetch(URL);
     if (response.ok) {
@@ -33,19 +53,23 @@ async function getCityWeather(event) {
   event.preventDefault();
   const cityNameForm = FORM.CITY_NAME.value;
   const cityName = cityNameForm.trim();
-  const cityWeatherData = await getDataFromURL(cityName);
+  const cityWeatherData = await getDataForNowDetails(cityName);
+  const forecastData = await getDataForForecast(cityName);
   FORM.FORM_FIELD.reset();
 
-  if (!cityWeatherData) {
+  if (!cityWeatherData && !forecastData) {
     return;
   }
 
+  console.log(forecastData);
+
   fillTabNow(cityName, cityWeatherData);
   fillTabDetails(cityName, cityWeatherData);
+  fillTabForecast(cityName, forecastData);
 }
 
 function addFavoiriteCity() {
-  const cityName = TAB_NOW.CURRENT_CITY_NAME.textContent;
+  const cityName = TAB_NOW.CITY_NAME.textContent;
   if (ADDED_LOCATIONS_LIST.find((city) => city.name === cityName)) {
     alert("This city already exists in list");
     return;
@@ -57,9 +81,11 @@ function addFavoiriteCity() {
 
 async function getFavoiriteCityWeather() {
   const cityName = this.parentElement.firstChild.textContent;
-  const cityWeatherData = await getDataFromURL(cityName);
+  const cityWeatherData = await getDataForNowDetails(cityName);
+  const forecastData = await getDataForForecast(cityName);
   fillTabNow(cityName, cityWeatherData);
   fillTabDetails(cityName, cityWeatherData);
+  fillTabForecast(cityName, forecastData);
 }
 
 function render() {
@@ -92,6 +118,7 @@ function deleteTask() {
   if (cityIndex != -1) {
     ADDED_LOCATIONS_LIST.splice(cityIndex, 1);
   }
+
   createLocalStorage(ADDED_LOCATIONS_LIST);
   clearTabs();
   fillTabsByDefault();
@@ -100,9 +127,12 @@ function deleteTask() {
 
 async function fillTabsByDefault() {
   const cityName = ADDED_LOCATIONS_LIST[0].name;
-  const cityWeatherData = await getDataFromURL(cityName);
+  const cityWeatherData = await getDataForNowDetails(cityName);
+  const forecastData = await getDataForForecast(cityName);
+
   fillTabNow(cityName, cityWeatherData);
   fillTabDetails(cityName, cityWeatherData);
+ //\] fillTabForecast(cityName, forecastData);
 }
 
 render();

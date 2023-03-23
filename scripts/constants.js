@@ -1,6 +1,7 @@
 export const SERVER = {
   SERVER_URL: "https://api.openweathermap.org/data/2.5/weather",
   API_KEY: "3b2a90ab392eba7f5708d0c85c3d4695",
+  FORECAST_URL: "https://api.openweathermap.org/data/2.5/forecast",
 };
 
 export const FORM = {
@@ -10,9 +11,9 @@ export const FORM = {
 };
 
 export const TAB_NOW = {
-  CURRENT_TEMPERATURE: document.querySelector(".current_temperature"),
+  TEMPERATURE: document.querySelector(".current_temperature"),
   CLOUD: document.querySelector(".cloud"),
-  CURRENT_CITY_NAME: document.querySelector(".currentCityName"),
+  CITY_NAME: document.querySelector(".currentCityName"),
   IMG_LIKE: document.querySelector(".buttonLike"),
   BUTTON_ADD_CITY: document.querySelector(".buttonAddCity"),
 };
@@ -24,4 +25,9 @@ export const TAB_DETAILS = {
   WEATHER_CLOUDS: document.querySelector(".weatherClouds"),
   SUNRISE: document.querySelector(".sunrise"),
   SUNSET: document.querySelector(".sunset"),
+};
+
+export const TAB_FORECAST = {
+  CITY_NAME: document.querySelector(".currentCityForecast"),
+  BOXES: document.querySelector(".forecastBoxes"),
 };

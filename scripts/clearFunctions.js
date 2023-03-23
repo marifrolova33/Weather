@@ -1,4 +1,4 @@
-import { TAB_NOW, TAB_DETAILS } from "./constants.js";
+import { TAB_NOW, TAB_DETAILS, TAB_FORECAST } from "./constants.js";
 export function clearAddedLocations() {
   const deleteLocationsList = document.querySelectorAll(".favoirite-city");
   if (deleteLocationsList) {
@@ -18,14 +18,13 @@ export function clearTabs() {
 }
 
 export function fillTabsIfEmpty() {
-  //TAB_NOW.CURRENT_TEMPERATURE.textContent = ``;
   TAB_NOW.CLOUD.src = `img/869767.png`;
-  TAB_NOW.CURRENT_CITY_NAME.textContent = "...Waiting";
+  TAB_NOW.CITY_NAME.textContent = "...Waiting";
   TAB_DETAILS.CITY_NAME.textContent = "...Waiting";
   TAB_DETAILS.TEMPERATURE.textContent = `Temperature:`;
   TAB_DETAILS.FEELS_LIKE.textContent = `Feels like:`;
   TAB_DETAILS.WEATHER_CLOUDS.textContent = `Weather:`;
   TAB_DETAILS.SUNRISE.textContent = `Sunrise:`;
   TAB_DETAILS.SUNSET.textContent = `Sunset:`;
+  TAB_FORECAST.CITY_NAME.textContent = "Waiting";
 }
-
