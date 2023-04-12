@@ -1,13 +1,21 @@
 import { TAB_NOW, TAB_DETAILS, TAB_FORECAST } from "./constants.js";
-export function fillTabNow(cityName, cityWeatherData) {
+export function fillTabNow(cityName, cityWeatherData, likeColor) {
   const currentTempValue = cityWeatherData.main.temp;
   const cloudIcon = cityWeatherData.weather[0].icon;
 
   TAB_NOW.CITY_NAME.textContent = cityName;
   TAB_NOW.TEMPERATURE.textContent = `${Math.trunc(currentTempValue)}°`;
-  TAB_NOW.IMG_LIKE.src = "img/483231_love_32x32.png";
+  TAB_NOW.IMG_LIKE.src = "img/Shape.svg";
   TAB_NOW.CLOUD.src = `https://openweathermap.org/img/wn/${cloudIcon}@4x.png`;
+
+   if (likeColor === "red") {
+      TAB_NOW.IMG_LIKE.src = "/img/Shape_red.svg";
+  } else {
+    TAB_NOW.IMG_LIKE.src = "img/Shape_black.svg";
+
+  }
 }
+
 
 export function fillTabDetails(cityName, cityWeatherData) {
   const currentTempValue = cityWeatherData.main.temp;

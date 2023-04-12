@@ -66,9 +66,9 @@ async function getCityWeather(event) {
     return;
   }
 
-  console.log(forecastData);
+  const likeColor = "";
 
-  fillTabNow(cityName, cityWeatherData);
+  fillTabNow(cityName, cityWeatherData, likeColor);
   fillTabDetails(cityName, cityWeatherData);
   fillTabForecast(cityName, forecastData);
 }
@@ -88,7 +88,8 @@ async function getFavoiriteCityWeather() {
   const cityName = this.parentElement.firstChild.textContent;
   const cityWeatherData = await getDataForNowDetails(cityName);
   const forecastData = await getDataForForecast(cityName);
-  fillTabNow(cityName, cityWeatherData);
+  const likeColor = "red";
+  fillTabNow(cityName, cityWeatherData, likeColor);
   fillTabDetails(cityName, cityWeatherData);
   fillTabForecast(cityName, forecastData);
 }
@@ -110,8 +111,9 @@ function render() {
     closeButton.addEventListener("click", deleteTask);
     favoiriteCityName.addEventListener("click", getFavoiriteCityWeather);
   });
-  if (ADDED_LOCATIONS_LIST.length === 0) {
-    fillTabsIfEmpty();
+  if (ADDED_LOCATIONS_LIST.length != 0) {
+    let lastCity = ADDED_LOCATIONS_LIST[ADDED_LOCATIONS_LIST.length - 1].name;
+    fillTabsByDefault(lastCity);
   }
 }
 
@@ -126,18 +128,24 @@ function deleteTask() {
 
   createLocalStorage(ADDED_LOCATIONS_LIST);
   clearTabs();
-  fillTabsByDefault();
+  fillTabsByDefault(ADDED_LOCATIONS_LIST[0].name);
   render();
 }
 
-async function fillTabsByDefault() {
-  const cityName = ADDED_LOCATIONS_LIST[0].name;
+async function fillTabsByDefault(cityNameShow) {
+  if (ADDED_LOCATIONS_LIST.length === 0) {
+    fillTabsIfEmpty();
+    return;
+  }
+  const cityName = cityNameShow;
   const cityWeatherData = await getDataForNowDetails(cityName);
   const forecastData = await getDataForForecast(cityName);
+  const likeColor = "red";
 
-  fillTabNow(cityName, cityWeatherData);
+  fillTabNow(cityName, cityWeatherData, likeColor);
   fillTabDetails(cityName, cityWeatherData);
   fillTabForecast(cityName, forecastData);
 }
 
+fillTabsIfEmpty();
 render();
